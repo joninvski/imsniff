@@ -1,0 +1,16 @@
+0.04
+----
+- Preliminary port to Windows. It seems to work, but it's not very
+  tested. Please report bugs.
+
+0.03
+----
+- Allows to be configured via configuration file.
+- Added support to non-ethernet interfaces.
+- Added profile information capture.
+- Added support for initial email notification.
+- Added support for new email notification.
+
+0.02
+----
+First public release

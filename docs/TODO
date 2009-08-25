@@ -1,0 +1,20 @@
+TODO
+----
+
+Not sure I will do all (or any) of this list, as the program is working 
+fairly well for my needs.
+
+- Delete old entries in the conversation linked list, so memory usage
+  doesn't grow forever (there are times where a switchboard can be 
+  closed with no warning, so we need to have our own timeout).
+- Improve documentation.
+- Some parts of the protocol are being ignored because I don't absolutely
+  need them, however keeping track of XFR's (and possibly others) would be 
+  useful.
+- Fix bugs.
+- Rewrite capture loop.
+- Deal with packets arriving out of order.
+- Capture file transfers.
+
+
+
