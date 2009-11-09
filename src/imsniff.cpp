@@ -6,6 +6,7 @@
 
 char chatlogdir[MAX_DIR_LENGTH+1]="";
 char debuglogdir[MAX_DIR_LENGTH+1]="";
+char input_file[MAX_DIR_LENGTH+1]="";
 int daemonize=0;
 char *currentversion = "0.04";
 int data_offset = -1;
@@ -513,6 +514,17 @@ int process_parms (int argc, char *argv[])
 			i++;			
 		}
 		else
+		if (strcmp (argv[i], "-if")==0)
+		{
+			if (i==argc-1)
+			{
+				printf ("-if requires you to specify an input file.\n");
+				return -1;
+			}
+			strcpy (input_file,argv[i+1]);
+			i++;
+		}
+		else
 		{
 			if (argv[i][0]!='-')
 			{
@@ -779,7 +791,8 @@ int main (int argc, char *argv[])
 	dh = pcap_open (devname, 65535, promisc?PCAP_OPENFLAG_PROMISCUOUS:0, 1000, NULL, errbuf);
     	pcap_freealldevs(alldevs);
 #else
-	dh = pcap_open_live (devname, 65535, promisc, 1000, errbuf);
+//        dh = pcap_open_live (devname, 65535, promisc, 1000, errbuf);
+        dh = pcap_open_offline(input_file, errbuf);
 #endif
 	if (dh==NULL)
 	{
